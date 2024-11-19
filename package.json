@@ -1,0 +1,32 @@
+{
+  "name": "n_react",
+  "version": "1.0.0",
+  "description": "trying npm",
+  "scripts": {
+    "start":"parcel index.html",
+    "build":"parcel build index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sushrutha15/React.git"
+  },
+  "author": "Sushrutha Patlolla",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sushrutha15/React/issues"
+  },
+  "homepage": "https://github.com/sushrutha15/React#readme",
+  "devDependencies": {
+    "parcel": "^2.13.0",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "browserslist":[
+    "last 2 versions"
+  ]
+
+}

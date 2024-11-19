@@ -1,6 +1,7 @@
-Episode-1
-                                     *****    Inception- Assignment     *****   
-************ Theory *********************************************************************************************************
+
+**Episode-1**
+                                         *Inception- Assignment*
+*Theory*
 
 1. What is Emmet?
 Emmet is a toolkit for webdevelopers.For example in VS code whenyou type "html:5" it gives the basic html 
@@ -38,16 +39,15 @@ Defer- In case of defer inside the script tag the html parsing continues and whi
 the script tag is fetched from the network and the html parsing contiues. Only after the HTML parsing ends the
 script tag executes.
 
-************* Coding *****************************************************************************************************
-
-// create hello world from basic HTML //
+*Coding*
+**create hello world from basic HTML**
 <body>
 <div>
 <h1> Hello World from HTML </h1>
 </div>
 </body>
 
-// create hello world from basic Javascript //
+**create hello world from basic Javascript**
 <body>
 <div id= root>
 const heading = document.createElement("h1")
@@ -57,7 +57,7 @@ root.appendChild(heading)
 </div>
 </body>
 
-// create hello world from React //
+**create hello world from React**
 <body>
 <div id ="root">
 const heading = React.createElement("h1",{},"Hello World from React")
@@ -66,33 +66,33 @@ root.render(heading)
 </div>
 </body>
 
-// nested elements in react //
-** < div id="parent">
+**nested elements in react**
+ < div id="parent">
     < div id="child">
       <h1> I'm h1 tag </h1>
     </div>
-   </div> **
+   </div> 
 
    const heading = React.createElement("div",{id:"parent"}, React.createElement("div",{id: "child"},
    React.createElement("h1",{},"I'm h1 tag")));
-   const root= ReactDOM.createRoot(document.getElementById("root")
+   const root= ReactDOM.createRoot(document.getElementById("root"))
    root.render(heading) 
 
-// siblings inside child //
-** < div id="parent">
+**siblings inside child**
+< div id="parent">
     < div id="child">
       <h1> I'm h1 tag </h1>
       <h2> I'm h1 tag </h2>
     </div>
-   </div> **
+   </div> 
 
    const heading = React.createElement("div",{id:"parent"}, React.createElement("div",{id: "child"},
    [React.createElement("h1",{},"I'm h1 tag"),React.createElement("h2",{},"I'm h2 tag")]));
    const root= ReactDOM.createRoot(document.getElementById("root")
    root.render(heading) 
 
-//silings for id child //
-** < div id="parent">
+**silings for id child**
+< div id="parent">
     < div id="child">
       <h1> I'm h1 tag </h1>
       <h2> I'm h1 tag </h2>
@@ -102,7 +102,7 @@ root.render(heading)
       <h2> I'm h1 tag </h2>
        </div>
     </div>
-   </div> **
+   </div> 
 
 const heading = React.createElement("div",{id: "parent"},[
     React.createElement("div",{id:"child"}, 
