@@ -48,6 +48,16 @@
     gap:2px;
 } 
 
+.filter-btn {
+    padding: 12px;
+    font-size: 15px;
+    margin: 10px;
+    border-radius: 9px;
+    cursor: pointer;
+    background-color: #d0d5d0;
+    border: 0;
+}
+
 .button{
     width:70px;
     height:35px;
