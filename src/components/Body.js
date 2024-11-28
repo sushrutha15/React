@@ -1,10 +1,20 @@
 import MenuCard from "./MenuCard"
 import  menuList  from "../utils/mockData";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 
 
 const BodyComponent = () =>{
-    const [itemsList, setitemsList] = useState(menuList)
+    const [itemsList, setitemsList] = useState(menuList.feedItems)
+
+    useEffect(()=>{
+        fetchData();
+    },[])
+
+    const fetchData = async()=>{
+        const data = await fetch("https://www.ubereats.com/search?carid=eyJhbmFseXRpY3NMYWJlbCI6IkxMTV9DQVJPVVNFTF9FTlRJVFlfUkVDIiwiZW50aXR5IjoiQ2xhc3NpYyBBbWVyaWNhbnxsbG1fY2Fyb3VzZWwiLCJwbHVnaW4iOiJyZWNvbW1lbmRhdGlvbkZlZWRQbHVnaW4iLCJyZWNvbW1UeXBlIjoiZW50aXR5X3JlY29tbWVuZG")
+        const json = await data.json
+        console.log(json)
+    }
     return(
         <div className="body">
             <div className="searchContainer">
@@ -16,17 +26,18 @@ const BodyComponent = () =>{
             <button className="filter-btn"
             onClick={()=>{
             const filteredList = itemsList.filter(
-                (itm) => itm.rating > 4 
+                (item) => item.store.rating.text > 4 
             );
             setitemsList(filteredList);
-            }}>Top Rated Items</button>
+            }}>Top Rated Stores</button>
             
         </div>
-        <h1>Featured Items</h1>
+        <h1>Classic American Restaurants </h1>
        </div>
         <div className="card">
             {  
-             itemsList.map(item => <MenuCard menuData={item}/>)
+             itemsList.map(item => 
+             <MenuCard menuData={item} key={item.uuid}/>)
             }
         </div>
         </div>

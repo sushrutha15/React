@@ -1,7 +1,7 @@
 .header{
     display: flex;
     justify-content: space-between;
-    background-color:rgb(235, 231, 231);
+    background-color:rgb(241, 241, 241);
     margin: 0;
     padding:0;
     box-sizing: border-box;
@@ -84,7 +84,7 @@
 
 .cardContainer {
     width:300px;
-    background-color: #f7eee9;
+    /* background-color: #f7eee9; */
     padding:10px;
     align-items: center;
     margin:10px;
@@ -106,7 +106,8 @@
 }
 
 .cardText{
-    font-size: 19px;;
+    font-size: 19px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .cardButton{

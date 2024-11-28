@@ -1,10 +1,10 @@
-import logo from "../utils/Images/svm_logo.png";
+import logo_c from "../utils/Images/logo_c.png";
 
 const FooterComponent =() =>{
     return(
         <div className="footerContainer">
            <div className="footerlogoContainer">
-              <img className="logo" src={logo} alt="Logo" />
+              <img className="logo" src={logo_c} alt="Logo" />
             </div>
             <div className="copyrights">
               <h3>copyrights reserved By@SriVari Mithai </h3>
