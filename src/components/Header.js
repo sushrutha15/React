@@ -1,6 +1,10 @@
+import React, { useState } from "react";
 import logo_c from "../utils/Images/logo_c.png";
 
+
 const HeaderComponent = () => {
+  const [BtnNameReact,setBtnNameReact] = useState("Login")
+  console.log("Header Rendered")
     return (
       <div className="header">
         <div className="logo-container">
@@ -12,6 +16,11 @@ const HeaderComponent = () => {
             <li>About</li>
             <li>Menu</li>
             <li>Cart</li>
+            <button className="loginButton" 
+              onClick={()=>{
+              BtnNameReact ==="Login"? setBtnNameReact("Logout") : setBtnNameReact("Login");
+            }}>{ BtnNameReact}
+            </button>
           </ul>
         </div>
       </div>
