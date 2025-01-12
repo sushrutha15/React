@@ -2,12 +2,15 @@ import MenuCard from "./MenuCard"
 // import menuList from "../utils/mockData";
 import {useState, useEffect} from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router";
 
 const BodyComponent = () => {
   const [itemsList, setitemsList] = useState([]); // itemsList has a copy of all the restaurants 
   const [filteredRestaurant, setFilteredRestaurant] = useState([])  // filteresRestaurant has a copy of filteredRestaurants
   const [searchText, setSearchText] = useState("");
+
   console.log("Body Rendered")
+  
   useEffect(() => {
     fetchData();
   }, []);
@@ -64,7 +67,10 @@ const BodyComponent = () => {
       </div>
       <div className="card">
         {filteredRestaurant.map(restaurant => (
-          <MenuCard menuData={restaurant} key={restaurant.info.id} />
+         <Link key={restaurant.info.id}  
+         to={"/restaurants/"+restaurant.info.id} className="linkModification"> 
+         <MenuCard menuData={restaurant} />
+         </Link>
         ))}
       </div>
     </div>

@@ -183,6 +183,17 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.error{
+    justify-content: center;
+    text-align: center;
+    margin: 90px;
+}
+
+.linkModification{
+    text-decoration: none;
+    color: inherit;
+}
+
 .copyrights{
     justify-content: space-between;
 }
