@@ -26,8 +26,8 @@ render(){
                 <div>
                     <h1>About</h1>
                     <h2>This is the About page</h2>
-                    <UserClass name={"Sushrutha Patlolla"} location={"Dallas, Texas"} contact={"psushrutha15@gmail.com"}/>
-                    <UserClass name={"Sushrutha Patlolla"} location={"Dallas, Texas"} contact={"psushrutha15@gmail.com"}/>
+                    <UserClass />
+                  
                 </div>
             )
 }

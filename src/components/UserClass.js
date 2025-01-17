@@ -3,37 +3,42 @@ import React from "react";
 class UserClass extends React.Component {
 constructor(props){
     super(props);
-    // console.log(props);
-    console.log("Child Constructor");
-
     this.state={
-        count:0,
-        count1:1,
+        userInfo :{
+            name: "Sush",
+            location:"TX",
+
+        }
     }
 }
 
-componentDidMount(){
+async componentDidMount(){
+const data = await fetch("https://api.github.com/users/sushrutha15");
+const json = await data.json();
 
+this.setState({
+    userInfo:json,
+});
+console.log(json);
+}
+
+componentDidUpdate(){
+    console.log("Component Updated");
+}
+
+componentWillUnmount(){
+    console.log("Component unmonted");
 }
 
     render(){
-        const{location,contact} = this.props;
-        const {count, count1}= this.state;
-        console.log("Child Render");
+        const {name, id, location} = this.state.userInfo;
         return(
             <div className="user-card">
-                <h1>Name: {this.props.name}</h1>
+                <h1>Name: {name}</h1>
+                <h2>Id: {id}</h2>
                 <h2>Location: {location}</h2>
-                <h2>Contact: {contact}</h2>
-                <h3>count:{count}</h3>
-                <button onClick={()=>{
-                    // count=count+1; -> Never update state variables directly. It will not update
-                  this.setState({
-                    count: this.state.count+1,
-                    
-                  })
-                }}>Click</button>
-                <h3>count1:{count1}</h3>
+                {/* <h2>Contact: {contact}</h2> */}
+               
             </div>
         )
     }
