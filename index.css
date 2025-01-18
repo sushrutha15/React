@@ -200,6 +200,11 @@
     margin:20px;
 }
 
+.internetStatusMessage {
+    text-align: center;
+    margin:60px;
+}
+
 .copyrights{
     justify-content: space-between;
 }
