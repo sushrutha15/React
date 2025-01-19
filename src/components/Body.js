@@ -1,4 +1,4 @@
-import MenuCard from "./MenuCard"
+import MenuCard from "./MenuCard";
 // import menuList from "../utils/mockData";
 import {useState, useEffect} from "react";
 import Shimmer from "./Shimmer";
@@ -27,7 +27,7 @@ const BodyComponent = () => {
   const onlineStatus = useOnlineStatus();
   if(onlineStatus === false)
     return(
-       <h1 className="internetStatusMessage"> Looks like you are offline, Please check your internet connection.</h1>
+       <h1 className="m-6 p-2 border-black font-medium"> Looks like you are offline, Please check your internet connection.</h1>
       )
   
   //Conditional Rendering-Rendiering on the basis of condition
@@ -38,13 +38,13 @@ const BodyComponent = () => {
   //returning based on ternary operator
   return itemsList.length === 0 ? <Shimmer /> : (
     <div className="body">
-      <div className="searchContainer">
-        <input className="search" type="search" placeholder="search" 
+      <div className="justify-center text-center">
+        <input className="border border-solid border-black px-44 p-1 m-5 rounded-md shadow-md" type="Search" placeholder="search" 
         value={searchText} 
         onChange={(e)=>{
          setSearchText(e.target.value)
         }}></input>
-        <button className="button" type="button" 
+        <button className="px-4 ml-5 bg-green-700 text-white rounded-md p-1 shadow-lg" type="button" 
           onClick={()=>{
           const filteredRestaurant= itemsList.filter((item)=> item.info.name.toLowerCase().includes(searchText.toLowerCase())); 
           /* what is ahppening on the above line?
@@ -58,7 +58,7 @@ const BodyComponent = () => {
       <div className="mainHeading">
         <div className="filter">
           <button 
-            className="filter-btn"
+            className="m-6 px-4 p-[1.5] bg-blue-100 shadow-md rounded-md border-black"
             onClick={() => {
               const filteredList = filteredRestaurant.filter(
                 (item) => item.info.avgRating > 4.5
@@ -69,9 +69,9 @@ const BodyComponent = () => {
             Top Rated Restaurants
           </button>
         </div>
-        <h1>Classic Restaurants</h1>
+        <h1 className="m-6 px-4 p-[1.5] font-bold ">Classic Restaurants</h1>
       </div>
-      <div className="card">
+      <div className="flex flex-wrap justify-center">
         {filteredRestaurant.map(restaurant => (
          <Link key={restaurant.info.id}  
          to={"/restaurants/"+restaurant.info.id} className="linkModification"> 

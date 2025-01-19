@@ -33,12 +33,10 @@ componentWillUnmount(){
     render(){
         const {name, id, location} = this.state.userInfo;
         return(
-            <div className="user-card">
+            <div className="m-6 p-2 border-black font-medium">
                 <h1>Name: {name}</h1>
                 <h2>Id: {id}</h2>
-                <h2>Location: {location}</h2>
-                {/* <h2>Contact: {contact}</h2> */}
-               
+                <h2>Location: {location}</h2> 
             </div>
         )
     }
