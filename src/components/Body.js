@@ -1,4 +1,4 @@
-import MenuCard from "./MenuCard";
+import MenuCard, {WithPromotedLabel} from "./MenuCard";
 // import menuList from "../utils/mockData";
 import {useState, useEffect} from "react";
 import Shimmer from "./Shimmer";
@@ -10,7 +10,9 @@ const BodyComponent = () => {
   const [filteredRestaurant, setFilteredRestaurant] = useState([])  // filteresRestaurant has a copy of filteredRestaurants
   const [searchText, setSearchText] = useState("");
 
-  console.log("Body Rendered")
+  const MenuCardPromoted = WithPromotedLabel(MenuCard);
+
+  console.log("Body Rendered");
   
   useEffect(() => {
     fetchData();
@@ -23,6 +25,7 @@ const BodyComponent = () => {
     setitemsList(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants) //This is optional chaining
     setFilteredRestaurant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
   };
+
 
   const onlineStatus = useOnlineStatus();
   if(onlineStatus === false)
@@ -44,39 +47,43 @@ const BodyComponent = () => {
         onChange={(e)=>{
          setSearchText(e.target.value)
         }}></input>
-        <button className="px-4 ml-5 bg-green-700 text-white rounded-md p-1 shadow-lg" type="button" 
+        <button className="px-4 ml-5 bg-black text-white rounded-md p-1 shadow-lg" type="button" 
           onClick={()=>{
           const filteredRestaurant= itemsList.filter((item)=> item.info.name.toLowerCase().includes(searchText.toLowerCase())); 
-          /* what is ahppening on the above line?
-          - From all the restaurants list we are filtering those restaurants that mathces our searchText and we are updating those restaurants to the virtualDom(setFilteredRestaurant), so now setFilteredRestaurant has the filtered restaurants.
-    
+          /* what is hppening on the above line?
+          - From all the restaurants list we are filtering those restaurants that mathces our searchText and we are updating those restaurants to the virtualDom(setFilteredRestaurant), 
+          so now setFilteredRestaurant has the filtered restaurants.
           */
-
           setFilteredRestaurant(filteredRestaurant);
         }}>Search</button>
       </div>
       <div className="mainHeading">
         <div className="filter">
           <button 
-            className="m-6 px-4 p-[1.5] bg-blue-100 shadow-md rounded-md border-black"
+            className="m-6  px-4 p-2 bg-orange-100 font-medium text-black shadow-lg rounded-md border-black"
             onClick={() => {
               const filteredList = filteredRestaurant.filter(
                 (item) => item.info.avgRating > 4.5
               );
               setFilteredRestaurant(filteredList);
-            }}
-          >
+            }}>
             Top Rated Restaurants
           </button>
         </div>
-        <h1 className="m-6 px-4 p-[1.5] font-bold ">Classic Restaurants</h1>
+        <h1 className="m-6 px-4 p-[1.5] font-bold text-3xl ">Classic Restaurants</h1>
       </div>
       <div className="flex flex-wrap justify-center">
         {filteredRestaurant.map(restaurant => (
          <Link key={restaurant.info.id}  
          to={"/restaurants/"+restaurant.info.id} className="linkModification"> 
-         <MenuCard menuData={restaurant} />
+         { restaurant.promoted ? <MenuCardPromoted menuData={restaurant} /> :
+         <MenuCard menuData={restaurant} /> 
+         /* The code should be {restaurant.data.promoted ? <MenuCardPromoted menuData={restaurant} /> :
+         <MenuCard menuData={restaurant} /> } , since swiggy updated their API we don't have promoted feature
+         in the json data.*/
+         }
          </Link>
+
         ))}
       </div>
     </div>

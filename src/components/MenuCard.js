@@ -4,7 +4,7 @@ const MenuCard = (props) => {
     return (
       <div className="m-8 p-4 w-[300px] bg-[#f4f4f4 hover:bg-[#eaeaea] rounded-md justify-center text-center shadow-md">
         <img
-         className="w-[250px]rounded-md flex-wrap rounded-md"
+         className="w-[250px]rounded-md flex-wrap rounded-md w-[350px] h-[300px]"
           src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${menuData.info.cloudinaryImageId}`}
         />
         <h3 className="m-2 text-center font-bold">{menuData.info.name}</h3>
@@ -15,5 +15,17 @@ const MenuCard = (props) => {
       </div>
     );
   };
+  
+
+  export const WithPromotedLabel =(MenuCard) => {
+    return (props)=>{
+      return (
+        <div>
+          <label>Promoted</label>
+          <MenuCard {...props}/>
+        </div>
+      )
+    }
+  }
   
   export default MenuCard;
