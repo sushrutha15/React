@@ -42,12 +42,12 @@ const BodyComponent = () => {
   return itemsList.length === 0 ? <Shimmer /> : (
     <div className="body">
       <div className="justify-center text-center">
-        <input className="border border-solid border-black px-44 p-1 m-5 rounded-md shadow-md" type="Search" placeholder="search" 
+        <input className="border border-solid border-black px-44 p-2 m-5 rounded-md shadow-md" type="Search" placeholder="search" 
         value={searchText} 
         onChange={(e)=>{
          setSearchText(e.target.value)
         }}></input>
-        <button className="px-4 ml-5 bg-black text-white rounded-md p-1 shadow-lg" type="button" 
+        <button className="px-4 ml-5 bg-black text-white rounded-md p-2 shadow-lg" type="button" 
           onClick={()=>{
           const filteredRestaurant= itemsList.filter((item)=> item.info.name.toLowerCase().includes(searchText.toLowerCase())); 
           /* what is hppening on the above line?

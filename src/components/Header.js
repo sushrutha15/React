@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import logo_c from "../utils/Images/logo_c.png";
 import { Link } from "react-router";
+import UserContext from "../utils/UserContext";
 
 
 const HeaderComponent = () => {
   const [BtnNameReact,setBtnNameReact] = useState("Login")
+
+  const {loggedInUser} =useContext(UserContext);
   console.log("Header Rendered")
     return (
       <div className="flex justify-between bg-orange-600 text-white" >
@@ -26,12 +29,16 @@ const HeaderComponent = () => {
               <Link to="/grocery"> Grocery</Link>
             </li>
             <li className="px-4">Cart</li>
+            <li className="px-4 ">
+               {loggedInUser}
+            </li>
             <button className=" px-6 p-1 bg-[#000000] text-white rounded-md shadow-lg" 
               onClick={()=>{
               BtnNameReact ==="Login"? setBtnNameReact("Logout") : setBtnNameReact("Login");
             }}>{ BtnNameReact}
             </button>
           </ul>
+         
         </div>
       </div>
     )

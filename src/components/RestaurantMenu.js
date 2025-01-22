@@ -2,11 +2,13 @@ import Shimmer from "./Shimmer";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import { useParams } from "react-router";
 import RestaurantCategory from "./RestaurantCategory";
+import { useState } from "react";
 
 const RestaurantMenu = () =>{
     
     const {resID} = useParams();
     const resInfo = useRestaurantMenu(resID);
+    const [showIndex, setShowIndex] = useState(null);
 
     if (resInfo === null)
         return <Shimmer/>
@@ -37,11 +39,20 @@ const RestaurantMenu = () =>{
                     </li>
                 ))}
             </ul> */}
-            {categories.map((category)=>(
-                <RestaurantCategory key ={category.card.card.title} data ={category.card.card}/>
+            {categories.map((category, index)=>(
+                // Controlled component
+                <RestaurantCategory key ={category.card.card.title} 
+                data ={category.card.card} 
+                showItems={index === showIndex} // Check if this is the active tab
+                setShowIndex={() =>
+                    setShowIndex(index === showIndex ? null : index) // Toggle the tab on click
+                }
+               />
             ))}
         </div>
     )
 }
 
 export default RestaurantMenu;
+
+// if 

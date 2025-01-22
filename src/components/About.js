@@ -1,3 +1,4 @@
+import UserContext from "../utils/UserContext";
 import UserClass from "./UserClass";
 import {Component} from "react";
 // const AboutComponent = () => {
@@ -27,6 +28,11 @@ render(){
                     <h1 className="m-6 p-4 font-bold text-2xl">About</h1>
                     <h2 className="m-6 font-medium">This is the About page</h2>
                     <UserClass />
+                    <div>
+                        <UserContext.Consumer>
+                        {({loggedInUser})=> <h1 className="m-8 font-medium">{loggedInUser}</h1>}
+                        </UserContext.Consumer>
+                    </div>
                   
                 </div>
             )
